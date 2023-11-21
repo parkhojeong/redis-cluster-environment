@@ -1,3 +1,5 @@
+#### 공식문서(https://redis.io/docs/management/scaling/#create-and-use-a-redis-cluster) 를 기반으로 레디스 클러스터를 띄워보는 방법
+
 
 7001 부터 7006 까지 각 폴더에 들어가서 노드를 띄운다
 ```bash
