@@ -1,4 +1,4 @@
-#### 공식문서(https://redis.io/docs/management/scaling/#create-and-use-a-redis-cluster) 를 기반으로 레디스 클러스터를 띄워보는 방법
+#### 공식문서(https://redis.io/docs/management/scaling/#create-and-use-a-redis-cluster) 를 기반으로 레디스 클러스터를 띄워보는 방`````
 
 
 7001 부터 7006 까지 각 폴더에 들어가서 노드를 띄운다
@@ -67,4 +67,18 @@ node 구성 확인
       3) "2f4641d656d191d78a033447c3062602436fe63c"
       4) (empty array)
 
+```
+
+ioredis
+```ts
+import Redis from "ioredis";
+const cluster = new Redis.Cluster([
+    {
+      port: 7001,// get, set을 호출했을 때 다른 노드로 redirection이 필요한 경우 레디스 클러스터가 리다이렉션 응답을 해주기 때문에 하나의 노드만 넣어도 동작함
+      host: "127.0.0.1" 
+    }
+  ]);
+
+await cluster.get("c", "123");
+await cluster.set("c", "123");
 ```
